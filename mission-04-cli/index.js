@@ -1,20 +1,10 @@
 const mongoose = require('mongoose');
 const Car = require('./models/Car');
 
-// Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 
-async function connectToMongoDB() {
-    try {
-        await mongoose.connect('mongodb://localhost:27017/mission-ready');
-        console.log('Connected to MongoDB');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-    }
-}
-
-// Connect to MongoDB
-connectToMongoDB();
+// Connect to mongoDB
+mongoose.connect('mongodb://localhost:27017/mission-ready');
 
 // Add Car
 const addCar = async (car) => {
@@ -33,7 +23,7 @@ const findCar = async (name) => {
     // Make case insensitive
     const search = new RegExp(name, 'i');
     try {
-        const cars = await Car.find({ $or: [{ image: search }, { colour: search }] });
+        const cars = await Car.find({ $or: [{ model: search }, { colour: search }] });
         console.info(cars);
         console.info(`${cars.length} matches`);
     } catch (error) {
@@ -70,6 +60,7 @@ const removeCar = async (_id) => {
         mongoose.connection.close();
     }
 }
+
 // List Cars
 const listCars = async () => {
     try {

@@ -37,9 +37,6 @@ const feature = [
   'Caption',
   'DenseCaptions',
   'Objects',
-  // 'People',
-  // 'Read',
-  // 'SmartCrops',
   'Tags'
 ];
 
@@ -66,11 +63,10 @@ app.post('/upload', (req, res) => {
     });
 
     const iaResult = result.body;
-    console.log(iaResult);
 
     let colour;
 
-    // Log the response using more of the API's object model
+    // Get identified colour from caption result
     if (iaResult.captionResult) {
       console.log(`Caption: ${iaResult.captionResult.text} (confidence: ${iaResult.captionResult.confidence})`);
       const words = iaResult.captionResult.text.split(" ")
@@ -81,8 +77,10 @@ app.post('/upload', (req, res) => {
     run()
     async function run() {
         try {
+            // Find all data in MongoDB with the same colour
             const cars = await Car.where("colour").equals(`${colour}`).select("model").select("colour").select("year")
             console.log(cars.map(car => car.model));
+            // Send matched car data to frontend
             res.send(cars);
         } catch (e) {
             console.log(e.message)

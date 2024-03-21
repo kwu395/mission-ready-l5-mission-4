@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function App() {
   const [image, setImage] = useState("");
   const [imagePath, setImagePath] = useState("");
-  // const [caption, setCaption] = useState("");
   const [display, setDisplay] = useState(0);
   const [cars, setCars] = useState([]);
 
@@ -32,6 +31,7 @@ function App() {
     }
     })
     .then(data => {
+      // Get matched cars data from backend
       console.log(data); 
       setCars(data);
       setDisplay(1);
@@ -44,12 +44,13 @@ function App() {
   return (
     <div>
       <img className="logo" src="../public/logo.png"/>
-      <h1 className="header">AI Vision Image Analysis (Azure)</h1>
+      <h1 className="header">AI Vision Image Analysis (Mission Four)</h1>
       {/* Submit Button */}
       <form onSubmit={submitImage} encType="multipart/form-data">
         <input type="file" name="image" accept="image/*"/>
         <button type="submit">Upload Image</button>
       </form>
+      {/* Matched Car Images and Model */}
       <div className="carImages">
         <h3>Matched Cars: </h3>
         {cars.map((car, index) => (
