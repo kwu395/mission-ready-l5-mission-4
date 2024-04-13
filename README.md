@@ -17,4 +17,4 @@ Image Analysis: Microsoft Azure AI"
 
 # Images
 
-![Webpage Image](https://media.discordapp.net/attachments/822322613816262660/1228588637143306261/image.png?ex=662c9755&is=661a2255&hm=57578fdb9184db799051227a8447159701a39f3ba7b3544a5cc5854893f88851&=&format=webp&quality=lossless)
+![Webpage Image](https://media.discordapp.net/attachments/822322613816262660/1228610073358631033/image.png?ex=662cab4b&is=661a364b&hm=6b5842cc0c81b8967c5ed6454ca96ff5aec85be45baeb8594212e2fc3d800610&=&format=webp&quality=lossless)
